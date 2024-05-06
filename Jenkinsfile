@@ -14,7 +14,7 @@ stages {
             }
         }
         stage('Deploy') { 
-          agent { label 'master' }
+          agent any
             steps {
                 echo "This is Deploy"
             }
