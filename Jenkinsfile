@@ -1,22 +1,23 @@
-pipeline {
-  agent {
-   label 'Label1'
- }
-stages {
-    stage('Build') { 
-            steps {
-              echo "This is Build"
+Pipeline {
+    agent none
+        stages {
+            stage('Build') {
+                agent any
+                    steps {
+                        echo " This is build"
             }
         }
-        stage('Test') { 
-            steps {
-               echo "This is Test"
+            stage('Test') {
+                agent { label 'Label1'}
+                    steps {
+                        echo "This is test"
             }
         }
-        stage('Deploy') { 
-            steps {
-                echo "This is Deploy"
-            }
+            stage('Deploy') {
+                agent { label 'Label2'}
+                    steps {
+                        echo "This is deploy"
+            } 
         }
     }
 }
