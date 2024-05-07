@@ -4,14 +4,17 @@ pipeline {
         string defaultValue: 'TEST', description: 'Environment to deploy the application', name: 'ENV'
         choice choices: ['main', 'master'], description: 'code from the branch', name: 'BRANCH'
         }
-            stages {
-            stage('Build') {
-            agent any
-                    steps {
-                        sh ''' 
-                            echo "Deploying to $ENV"
-                            echo "The code is from $BRANCH"
-                           '''
+
+            if[ $BRNACH = 'master'] ; then
+                stages {
+                stage('Build') {
+                    agent any
+                        steps {
+                            sh ''' 
+                                echo "Deploying to $ENV"
+                                echo "The code is from $BRANCH"
+                               '''
+                           fi
                     }
             }
         }
