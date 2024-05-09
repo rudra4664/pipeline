@@ -1,1 +1,9 @@
-Hi This is the test file
+pipeline {
+    agent any 
+        stages {
+            stage('Build')
+            steps {
+                echo " This is build"
+            }
+        }
+}
