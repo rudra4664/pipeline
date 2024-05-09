@@ -1,9 +1,37 @@
 pipeline {
-    agent any 
+    agent any
         stages {
             stage('Build') {
             steps {
-                echo " This is build"
+                echo "This is build"
+            }
+        }
+            stage('Test Parallelly') {
+            parallel {
+                stage('Testing on Chrome') {
+                steps {
+                    echo " This testing on chrome server"
+                }
+            }
+                stage('Testing on Safari') {
+                steps {
+                    echo " This testing on safari browser"
+                }
+            }
+        }
+    }
+            stage('Deploy Parallelly') {
+                parallel {
+                    stage('This is deploy1') {
+                        steps {
+                             echo "This is Deploy1"
+                        }
+                    }
+                    stage('This is deploy2') {
+                        steps {
+                            echo "This is deploy2"
+                        }
+                    }
                 }
             }
         }
