@@ -7,6 +7,7 @@ pipeline {
             }
         }
             stage('Test Parallelly') {
+            agent { label 'Label1' }
             parallel {
                 stage('Testing on Chrome') {
                 steps {
