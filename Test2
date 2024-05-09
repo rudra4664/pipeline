@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'Label1' }
         stages {
             stage('Build') {
             steps {
@@ -7,7 +7,6 @@ pipeline {
             }
         }
             stage('Test Parallelly') {
-            agent { label 'Label1' }
             parallel {
                 stage('Testing on Chrome') {
                 steps {
